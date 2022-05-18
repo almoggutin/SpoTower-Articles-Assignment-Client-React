@@ -1,0 +1,80 @@
+@use '../../../styles/base' as *;
+
+.main-footer {
+    width: 100vw;
+    min-height: 50rem;
+
+    & > section:first-child {
+        @extend %flex-center;
+        flex-direction: column;
+        gap: 2rem;
+
+        width: 100%;
+        min-height: 15rem;
+        padding: 1rem;
+
+        background-color: $blue;
+        color: white;
+
+        .titles-container {
+            @extend %flex-center;
+            flex-direction: column;
+            gap: 10px;
+
+            h1,
+            h4 {
+                margin: 0;
+
+                text-align: center;
+                font-weight: 400;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+
+                @media (min-width: 800px) {
+                    font-size: 2.2rem;
+                }
+            }
+        }
+    }
+
+    & > section:last-child {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+
+        width: 100%;
+        height: 35rem;
+        padding: 2rem;
+
+        background-color: $darkBlue;
+
+        @media (min-width: 800px) {
+            flex-direction: unset;
+            justify-content: space-between;
+            align-items: unset;
+        }
+
+        & > .footer-item {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+
+            color: $white;
+
+            h3 {
+                margin: 0;
+            }
+
+            .footer-item-links {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    }
+}
