@@ -27,7 +27,7 @@
 
 ## About The Application
 
-    This client-side application is part of the SpoTower articles assingment built with React and Javascript.
+This client-side application is part of the SpoTower articles assingment built with React and Javascript.
 
 It is built with the React library to build a single page application.
 
