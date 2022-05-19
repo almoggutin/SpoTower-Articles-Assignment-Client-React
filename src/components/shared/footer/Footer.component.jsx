@@ -1,10 +1,16 @@
 import './footer.styles.scss';
 
+import useMobile from '../../../hooks/useMobile.hooks';
+
 import Searchbar from '../../searchbar/Searchbar.component';
+import FooterItem from './footer-item/FooterItem.component';
+import ZipcodeForm from './zipcode-form/ZipcodeForm.component';
 
 import footerData from '../../../data/footer.data';
 
 const Footer = () => {
+    const isMobile = useMobile();
+
     return (
         <footer className="main-footer">
             <section>
@@ -14,20 +20,12 @@ const Footer = () => {
                     <h4>Find & compare your best rates in 2 minutes.</h4>
                 </div>
 
-                <Searchbar />
+                {isMobile ? <ZipcodeForm /> : <Searchbar />}
             </section>
 
             <section>
                 {footerData.map(({ id, title, links }) => (
-                    <div className="footer-item" key={id}>
-                        <h3>{title}</h3>
-
-                        <ul className="footer-item-links">
-                            {links.map(({ id: linkID, link }) => (
-                                <li key={linkID}>{link}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    <FooterItem key={id} title={title} links={links} />
                 ))}
             </section>
         </footer>

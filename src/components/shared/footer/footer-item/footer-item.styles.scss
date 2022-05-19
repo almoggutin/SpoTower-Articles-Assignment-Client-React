@@ -1,0 +1,21 @@
+@use '../../../../styles/base' as *;
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    color: $white;
+
+    h3 {
+        margin: 0;
+    }
+
+    .footer-item-links {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
