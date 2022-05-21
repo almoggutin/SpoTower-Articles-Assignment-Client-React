@@ -1,27 +1,31 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './menu.styles.scss';
 
+import MenuItem from './menu-item/MenuItem.component';
+
+import MenuItemModel from '../../models/menu-item.model';
 import articlesData from '../../data/articles.data';
 
 const Menu = () => {
-    const [categories, setCategories] = useState([]);
+    const [menuItems, setMenuItems] = useState([]);
 
-    // useEffect(() => {
-    //     const articleCategories = articlesData.map(())
-    // }, []);
+    useEffect(() => {
+        const articleCategories = [...new Set(articlesData.map((article) => article.category))];
+
+        const items = articleCategories.map((catrgory) => {
+            const articles = articlesData.filter((article) => article.category === catrgory);
+
+            return new MenuItemModel(catrgory, articles);
+        });
+
+        setMenuItems(items);
+    }, []);
 
     return (
         <div className="menu-container">
-            {/* {menuItems.map(({ id, category, links }) => (
-                <div key={id} className="menu-item">
-                    <div className="category-item">
-                        <h1>{category}</h1>
-
-                        <span>&gt;</span>
-                    </div>
-                </div>
-            ))} */}
+            {menuItems.map(({ id, category, articles }) => (
+                <MenuItem key={id} category={category} articles={articles} />
+            ))}
         </div>
     );
 };

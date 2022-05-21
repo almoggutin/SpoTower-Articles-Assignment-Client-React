@@ -1,0 +1,72 @@
+@use '../../../styles/base' as *;
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 100%;
+    min-height: calc(22rem / 4);
+    padding: 0 2rem;
+
+    cursor: pointer;
+
+    &:first-child .category-item {
+        color: $orange;
+    }
+
+    &:not(:last-child) {
+        border-bottom: 2px solid #808080;
+    }
+
+    &.open {
+        .category-item .arrow {
+            transform: rotate(270deg);
+        }
+
+        .category-links {
+            display: flex;
+        }
+    }
+
+    .category-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+        height: calc(22rem / 4);
+
+        h3 {
+            margin: 0;
+        }
+
+        .arrow {
+            transform: rotate(90deg);
+            transition: all 0.2s linear;
+        }
+    }
+
+    .category-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+
+        width: 100%;
+        margin-bottom: 2rem;
+
+        animation: reveal 0.5s linear forwards;
+    }
+}
+
+@keyframes reveal {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+    to {
+        max-height: 800px;
+        opacity: 1;
+    }
+}

@@ -13,7 +13,7 @@ const Header = () => {
             {!isMobile && (
                 <>
                     <h1>
-                        <Link to="/">Auth Insurance</Link>
+                        <Link to="/">Auto Insurance</Link>
                     </h1>
 
                     <Searchbar />
