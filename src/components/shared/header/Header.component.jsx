@@ -1,12 +1,13 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './header.styles.scss';
 
-import useMobile from '../../../hooks/useMobile.hooks';
+import { ScreenSizeContext } from '../../../contexts/ScreenSize.context';
 
 import Searchbar from '../../searchbar/Searchbar.component';
 
 const Header = () => {
-    const isMobile = useMobile();
+    const { isMobile } = useContext(ScreenSizeContext);
 
     return (
         <header className="main-header">

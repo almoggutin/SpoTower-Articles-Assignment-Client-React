@@ -1,6 +1,7 @@
+import { useContext } from 'react';
 import './footer.styles.scss';
 
-import useMobile from '../../../hooks/useMobile.hooks';
+import { ScreenSizeContext } from '../../../contexts/ScreenSize.context';
 
 import Searchbar from '../../searchbar/Searchbar.component';
 import FooterItem from './footer-item/FooterItem.component';
@@ -9,7 +10,7 @@ import ZipcodeForm from './zipcode-form/ZipcodeForm.component';
 import footerData from '../../../data/footer.data';
 
 const Footer = () => {
-    const isMobile = useMobile();
+    const { isMobile } = useContext(ScreenSizeContext);
 
     return (
         <footer className="main-footer">

@@ -1,5 +1,9 @@
 import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+import ScreenSizeContextProvider from './contexts/ScreenSize.context';
+
+import Loader from './components/shared/loader/Loader.component';
 
 const Header = lazy(() => import('./components/shared/header/Header.component'));
 const Footer = lazy(() => import('./components/shared/footer/Footer.component'));
@@ -9,16 +13,20 @@ const ArticlePage = lazy(() => import('./pages/article-page/ArticlePage.componen
 const App = () => {
     return (
         <BrowserRouter>
-            <Suspense fallback={<div></div>}>
-                <Header />
+            <ScreenSizeContextProvider>
+                <Suspense fallback={<Loader />}>
+                    <Header />
 
-                <Routes>
-                    <Route path="" element={<HomePage />} />
-                    <Route path="article" element={<ArticlePage />} />
-                </Routes>
+                    <Routes>
+                        <Route path="" element={<HomePage />} />
+                        <Route path="articles/:articleID" element={<ArticlePage />} />
 
-                <Footer />
-            </Suspense>
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </Routes>
+
+                    <Footer />
+                </Suspense>
+            </ScreenSizeContextProvider>
         </BrowserRouter>
     );
 };
